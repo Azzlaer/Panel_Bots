@@ -1,0 +1,98 @@
+<?php
+$configPath = "C:/Servidores/wc3bots/d2cbott.cfg"; // Ajusta esta ruta si es necesario
+
+function leer_configuracion($ruta) {
+    if (!file_exists($ruta)) {
+        die("<p style='color:red;'>Error: No se encontró el archivo de configuración en <code>$ruta</code></p>");
+    }
+
+    $lineas = file($ruta, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    if ($lineas === false) {
+        die("<p style='color:red;'>Error: No se pudo leer el archivo de configuración.</p>");
+    }
+
+    $config = [];
+    foreach ($lineas as $i => $linea) {
+        if (preg_match('/^\s*([a-zA-Z0-9_]+)\s*=\s*(.*)$/', $linea, $matches)) {
+            $clave = $matches[1];
+            $valor = $matches[2];
+            $config[$clave] = ['valor' => $valor, 'linea' => $i];
+        }
+    }
+    return [$lineas, $config];
+}
+
+function guardar_configuracion($ruta, $lineas, $config) {
+    foreach ($_POST as $clave => $nuevo_valor) {
+        if (isset($config[$clave])) {
+            $indice = $config[$clave]['linea'];
+            $lineas[$indice] = "$clave = $nuevo_valor";
+        }
+    }
+
+    $resultado = file_put_contents($ruta, implode(PHP_EOL, $lineas));
+    if ($resultado === false) {
+        echo "<p style='color:red;'>Error al guardar los cambios.</p>";
+    } else {
+        echo "<p style='color:green;'>Configuración actualizada correctamente.</p>";
+    }
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    list($lineas, $config) = leer_configuracion($configPath);
+    guardar_configuracion($configPath, $lineas, $config);
+}
+
+// Mostrar el formulario
+list($lineas, $config) = leer_configuracion($configPath);
+?>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Editor de Configuración</title>
+    <style>
+        body {
+            background: #111;
+            color: #eee;
+            font-family: Arial;
+            padding: 20px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 6px;
+            margin-bottom: 10px;
+            background: #222;
+            color: #eee;
+            border: 1px solid #555;
+            border-radius: 4px;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+<body>
+    <h2>Editar Configuración: <code><?php echo basename($configPath); ?></code></h2>
+    <form method="post">
+        <?php foreach ($config as $clave => $info): ?>
+            <label for="<?= htmlspecialchars($clave) ?>"><?= htmlspecialchars($clave) ?></label>
+            <input type="text" id="<?= htmlspecialchars($clave) ?>" name="<?= htmlspecialchars($clave) ?>" value="<?= htmlspecialchars($info['valor']) ?>">
+        <?php endforeach; ?>
+        <input type="submit" value="Guardar Cambios">
+    </form>
+</body>
+</html>
