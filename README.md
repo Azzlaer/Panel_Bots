@@ -44,15 +44,15 @@ Aquí tienes un vistazo general de los archivos principales:
 ---
 
 ##  IMAGENES
-https://github.com/Azzlaer/Panel_Bots/blob/main/Imagenes/Screenshot_1.png
-![Descripción de la imagen](.blob/main/imagenes/Screenshot_1.png)
-![Descripción de la imagen](.blob/main/imagenes/Screenshot_2.png)
-![Descripción de la imagen](.blob/main/imagenes/Screenshot_3.png)
-![Descripción de la imagen](.blob/main/imagenes/Screenshot_4.png)
-![Descripción de la imagen](.blob/main/imagenes/Screenshot_5.png)
-![Descripción de la imagen](.blob/main/imagenes/Screenshot_6.png)
-![Descripción de la imagen](.blob/main/imagenes/Screenshot_7.png)
-![Descripción de la imagen](.blob/main/imagenes/Screenshot_8.png)
+
+![Descripción de la imagen](https://github.com/Azzlaer/Panel_Bots/blob/main/Imagenes/Screenshot_1.png)
+![Descripción de la imagen](https://github.com/Azzlaer/Panel_Bots/blob/main/Imagenes/Screenshot_2.png)
+![Descripción de la imagen](https://github.com/Azzlaer/Panel_Bots/blob/main/Imagenes/Screenshot_3.png)
+![Descripción de la imagen](https://github.com/Azzlaer/Panel_Bots/blob/main/Imagenes/Screenshot_4.png)
+![Descripción de la imagen](https://github.com/Azzlaer/Panel_Bots/blob/main/Imagenes/Screenshot_5.png)
+![Descripción de la imagen](https://github.com/Azzlaer/Panel_Bots/blob/main/Imagenes/Screenshot_6.png)
+![Descripción de la imagen](https://github.com/Azzlaer/Panel_Bots/blob/main/Imagenes/Screenshot_7.png)
+![Descripción de la imagen](https://github.com/Azzlaer/Panel_Bots/blob/main/Imagenes/Screenshot_8.png)
 
 ##  Instalación & Uso
 
